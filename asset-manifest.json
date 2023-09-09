@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.0e8cc840.css",
-    "main.js": "/static/js/main.25f04df8.js",
-    "static/js/787.afd34582.chunk.js": "/static/js/787.afd34582.chunk.js",
-    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
-    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/index.html",
-    "main.0e8cc840.css.map": "/static/css/main.0e8cc840.css.map",
-    "main.25f04df8.js.map": "/static/js/main.25f04df8.js.map",
-    "787.afd34582.chunk.js.map": "/static/js/787.afd34582.chunk.js.map"
+    "main.css": "/Expense-tracker_reactProject/static/css/main.b153c4e7.css",
+    "main.js": "/Expense-tracker_reactProject/static/js/main.f8fffc82.js",
+    "static/js/787.afd34582.chunk.js": "/Expense-tracker_reactProject/static/js/787.afd34582.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/Expense-tracker_reactProject/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
+    "static/media/bootstrap-icons.woff2?": "/Expense-tracker_reactProject/static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
+    "static/media/logo.svg": "/Expense-tracker_reactProject/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Expense-tracker_reactProject/index.html",
+    "main.b153c4e7.css.map": "/Expense-tracker_reactProject/static/css/main.b153c4e7.css.map",
+    "main.f8fffc82.js.map": "/Expense-tracker_reactProject/static/js/main.f8fffc82.js.map",
+    "787.afd34582.chunk.js.map": "/Expense-tracker_reactProject/static/js/787.afd34582.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e8cc840.css",
-    "static/js/main.25f04df8.js"
+    "static/css/main.b153c4e7.css",
+    "static/js/main.f8fffc82.js"
   ]
 }
