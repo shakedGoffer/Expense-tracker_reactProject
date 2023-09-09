@@ -1,38 +1,310 @@
-.App {
-  text-align: center;
+/* Global class */
+
+/* App title */
+header.App-header {
+  /* keep header on top (when scrolling) */
+  z-index: 2;
+  top: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App-header h1 {
+  word-spacing: 0.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.center {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: column;
+}
+
+.center-vertically {
+  display: flex;
+  align-items: center;
+
+}
+
+/* ul item - that is not overflows */
+.prevent-overflow {
+  overflow-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* NavBar */
+
+li.nav-item{
+  margin-bottom: 8px;
+}
+
+/* For desktops / pcs */
+
+.desktop {
+  padding: 1rem 0.5rem;
+}
+
+.desktop li a {
+  font-size: x-large;
+  color: black;
+  cursor: pointer;
+}
+
+.desktop li.selected a {
+  /* selected item*/
+  background-color: whitesmoke !important;
+}
+
+/* btn add */
+.desktop-nav button.add {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+
+.desktop-nav button.add:hover {
+  background-color: rgb(10, 88, 202) !important;
+}
+
+
+/* For mobile devices */
+.mobile-nav {
+  display: none;
+}
+
+/* mobile nav icon */
+.mobile-nav i.navBarIcon {
+  font-size: 2.25rem !important;
+  z-index: 10 !important;
+  position: relative !important;
+}
+
+.mobile-nav  i.bi-x {
+  font-size: 2.8rem !important;
+  z-index: 10 !important;
+  position: fixed !important;
+}
+
+/* mobile nav ul */
+.mobile-nav div.mobile ul.mobile {
+  /* nav list */
+  width: 100%;
+}
+
+.mobile-nav div.mobile ul.mobile li a {
+  font-size: xx-large;
+  color: black;
+  cursor: pointer;
+}
+
+.mobile-nav div.mobile ul.mobile li.selected a {
+  /* selected item */
+  color: rgb(10, 88, 202) !important;
+}
+
+/* btn add */
+.mobile-nav button.add {
+  margin-top: 1.5rem;
+}
+
+.mobile-nav button.add i {
+  font-size: xxx-large !important;
+}
+
+
+/** HOME PAGE**/
+
+/* card income / expenses */
+.card {
+  height: 250px !important;
+  min-width: 48% !important;
+}
+
+/* History ul list */
+ul.history{
+  list-style-type: none;
+}
+
+
+
+/** ADD PAGE **/
+
+/* income / expenses radio button */
+.addPage .btnAdd {
+  min-width: 49% !important;
+  background-color: white;
+  font-size: x-large;
+}
+
+/* Hide the default radio button */
+.addPage .btnAdd input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+
+/* income / expenses radio button typ 2 - square btn*/
+.buttons input {
+  appearance: none;
+  cursor: pointer;
+  background:white;
+  font-size: larger;
+  transition: all 0.1s;
+  padding: 6px 12px;
+  max-width: 49% !important;
+}
+
+.buttons input.income {
+  color:rgb(25, 135, 84);
+  border: 1px solid rgb(25, 135, 84);
+}
+
+.buttons input.expense {
+  color:rgb(220, 53, 69);
+  border: 1px solid rgb(220, 53, 69);
+}
+
+.buttons input.income:checked {
+  background: rgb(25, 135, 84);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 0px #808080;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.buttons input.expense:checked {
+  background: rgb(220, 53, 69);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 0px #808080;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttons input::before {
+  content: attr(label);
+  text-align: center;
 }
+
+/* select - expense categories + animation */
+.selectDiv {
+  padding: 0 !important;
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: visible 0.5s, max-height 0.6s ease-in-out;
+}
+
+/* show expense categories */
+.showExpense_Categories {
+  visibility: visible;
+  max-height: 100px; /* Set an appropriate value */
+}
+
+/* hide expense categories */
+.hideExpense_Categories {
+  visibility:hidden ;
+  max-height: 0; /* Set an appropriate value */
+}
+
+
+.form-group{
+  padding: 0.8rem 0 !important;
+}
+.form-group label,.form-group label span {
+  font-size: larger  !important;
+}
+
+/** Expenses page **/
+
+/* btn time Line monthly / yearly */
+.timeLine .btn{
+  background-color: white;
+}
+
+.timeLine .btn.selected{
+  background-color: transparent;
+  border: 1.5px solid black;
+}
+
+/** category page **/
+
+/* color picker */
+#Color {
+  background-color: transparent;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+#Color::-webkit-color-swatch {
+  border-radius: 50%;
+  border: 2px solid #000000;
+}
+#Color::-moz-color-swatch {
+  border-radius: 50%;
+  border: 2px solid #000000;
+}
+
+
+
+
+@media (max-width: 768px) {
+  /* For screen sizes up to 768px (mobile devices) */
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  /* App title */
+  .App-header h1 {
+    font-size: 2.2rem !important;
+    word-spacing: 0.2rem;
+    z-index: 1 !important;
+  }
+
+  /* card income / expenses mobile font siz */
+  .card p.card-title{
+    font-size: xx-large !important;
+  }
+
+  /* form */
+  form h2{
+    font-size: xx-large  !important;
+  }
+  .form-group label {
+    font-size: x-large  !important;
+  }
+  .form-group input {
+    font-size: large  !important;
+  }
+
+
+}
+
+/**/
+.item-details-box-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 10; /* Ensure the overlay is above other content */
+}
+
+.item-details-box {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 11; /* Ensure the box is above the overlay */
+}
+
+
+
+/* CSS for touch devices */
+@media (hover: none) {}
