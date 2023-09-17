@@ -5,7 +5,7 @@ import Chart_HomePage from '../charts/Chart_HomePage';
 import History from '../History';
 import { useState } from 'react';
 
-function HomePage({ list, fullList, deleteItem}) {
+function HomePage({ list, fullList, deleteItem, moneySymbol}) {
 
   const [sumIncome, setSumIncome] = useState(0);
   const [sumExpenses, setSumExpenses] = useState(0);
@@ -34,32 +34,32 @@ function HomePage({ list, fullList, deleteItem}) {
   return (
     <div className='container py-3'>
       <h1 className='text-capitalize fw-semibold fs-2'>monthly balance:
-        <span className={`${balance > 0 ? 'text-success' : 'text-danger'}`}> {balance}$</span>
+        <span className={`${balance > 0 ? 'text-success' : 'text-danger'}`}> {balance}{moneySymbol}</span>
       </h1>
 
       {/* card income & expenses view (HTML) */}
       <div className='row justify-content-around'>
-        <Card sum={sumIncome} liable="income" />
-        <Card sum={sumExpenses} liable="expenses" />
+        <Card sum={sumIncome} liable="income" moneySymbol={moneySymbol}/>
+        <Card sum={sumExpenses} liable="expenses" moneySymbol={moneySymbol}/>
       </div>
 
-      <Chart_HomePage fullList={fullList} />
+      <Chart_HomePage fullList={fullList} moneySymbol={moneySymbol}/>
 
       <div className='mt-5'>
         <div className='col-10 border-bottom border-2 fs-4'>Monthly History</div>
-        <History list={list.slice(-10).reverse()} deleteItem={deleteItem} />
+        <History list={list.slice(-10).reverse()} deleteItem={deleteItem} moneySymbol={moneySymbol} />
       </div>
     </div>
   );
 }
 
 {/* card income & expenses */ }
-function Card({ liable, sum, list }) {
+function Card({ liable, sum, list,moneySymbol}) {
   return (
     <div className="card col-11 col-sm-5 my-2 shadow border-0">
       <div className="card-body text-center fw-normal py-5 center">
         <p className="card-title text-capitalize fs-2">{liable}</p>
-        <p className={`card-text  fs-2 ${liable === "income" ? "text-success" : (liable === "expenses" ? "text-danger" : "text-dark")}`}>{sum}$</p>
+        <p className={`card-text  fs-2 ${liable === "income" ? "text-success" : (liable === "expenses" ? "text-danger" : "text-dark")}`}>{sum}{moneySymbol}</p>
       </div>
     </div>
   );

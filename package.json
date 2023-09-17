@@ -4,6 +4,9 @@
   "private": true,
   "homepage": "https://shakedGoffer.github.io/Expense-tracker_reactProject",
   "dependencies": {
+    "@capacitor/android": "^5.3.0",
+    "@capacitor/cli": "^5.3.0",
+    "@capacitor/core": "^5.3.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -17,11 +20,12 @@
     "react-icons": "^4.11.0",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.4",
+    "react-select-currency": "^1.0.7",
     "react-textarea-autosize": "^8.5.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",  
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",

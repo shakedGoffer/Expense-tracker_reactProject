@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 
 {/* History (income / expenses) */ }
-function History({ list, deleteItem }) {
+function History({ list, deleteItem, moneySymbol }) {
 
     const [selectedItem, setSelectedItem] = useState(null);
   
@@ -37,34 +37,34 @@ function History({ list, deleteItem }) {
         <ul className='list-group mt-3 history'>
           {/* Map over array */}
           {list.map((item, index) => (
-            <HistoryItem key={index}  item={item} onItemClick={(item) => { setSelectedItem(item) }} />
+            <HistoryItem key={index}  item={item} moneySymbol={moneySymbol} onItemClick={(item) => { setSelectedItem(item) }} />
           ))}
         </ul>
   
         {/* Item details box */}
         {selectedItem && (
-          <ItemDetailsBox item={selectedItem}  onClose={() => { setSelectedItem(null) }} deleteItem={deleteItem} />
+          <ItemDetailsBox item={selectedItem} moneySymbol={moneySymbol} onClose={() => { setSelectedItem(null) }} deleteItem={deleteItem} />
         )}
       </div>
     );
   }
   
   {/* History item (income / expenses) */ }
-  function HistoryItem({ item, onItemClick }) {
+  function HistoryItem({ item, onItemClick,moneySymbol }) {
     const { id, selectedOption, amount, category, description, date } = item;
   
     return (
       <li className={`border-end border-5 rounded p-3 my-2 bg-white shadow ${selectedOption == 'income' ? "border-success" : "border-danger"}`} key={id} onClick={() => onItemClick(item)}>
         <div className='row justify-content-between'>
           <div className='col fs-5 text-lowercase prevent-overflow'>{category == "" ? selectedOption : category}</div>
-          <div className={`col-auto fs-5 prevent-overflow ${selectedOption == 'income' ? "text-success" : "text-danger"}`}>{selectedOption == 'income' ? "+" + amount : "-" + amount}$</div>
+          <div className={`col-auto fs-5 prevent-overflow ${selectedOption == 'income' ? "text-success" : "text-danger"}`}>{selectedOption == 'income' ? "+" + amount : "-" + amount}{moneySymbol}</div>
         </div>
       </li>
     );
   }
   
   {/* on history item click a pop up box show withe all the item details */ }
-  function ItemDetailsBox({ item, onClose, deleteItem }) {
+  function ItemDetailsBox({ item, onClose, deleteItem,moneySymbol }) {
     const { id, selectedOption, amount, category, description, date } = item;
   
     // Handle clicking outside the box to close the pop-up
@@ -95,7 +95,7 @@ function History({ list, deleteItem }) {
           <div className='details mt-3 fs-6 fw-bold'>
             <div>Type: <ItemDetailsText text={selectedOption} /> </div>
             <div>Category: <ItemDetailsText text={category} /></div>
-            <div>Amount: <ItemDetailsText text={amount + "$"} /></div>
+            <div>Amount: <ItemDetailsText text={amount + moneySymbol} /></div>
             <div>Description: <ItemDetailsText text={description} /></div>
             <div>Date: <ItemDetailsText text={date.day + "/" + date.month + "/" + date.year} /></div>
             <div>ID: <ItemDetailsText text={id} /></div>

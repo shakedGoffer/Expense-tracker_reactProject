@@ -5,10 +5,12 @@ import HomePage from './mainPages/HomePage';
 import AddPage from './mainPages/AddPage';
 import Expenses_Income_Page from './mainPages/Expenses_Income_Page';
 import AddCategoryPage from './mainPages/AddCategoryPage';
+import CurrencyPickerPage from './mainPages/CurrencyPickerPage';
 
 function Screen({ page, setPage }) {
   const [list, setList] = useState(() => {const storedList = JSON.parse(localStorage.getItem('list')); return Array.isArray(storedList) ? storedList : [];}); // list from local storage or [] as a default
   const [monthList, setMonthList] = useState([]);
+  const [moneySymbol, setMoneySymbol] = useState(() => {const symbol = JSON.parse(localStorage.getItem('moneySymbol')); return symbol ? symbol :"$";}); // money symbol from local storage ot "$" as a default
 
   // sort and create a monthList only items (when state list changes)
   useEffect(() => {
@@ -43,11 +45,12 @@ function Screen({ page, setPage }) {
 
   // Define a mapping object for components
   const pageComponents = {
-    HomePage: <HomePage list={monthList} fullList={list} deleteItem={deleteItem} />,
+    HomePage: <HomePage list={monthList} fullList={list} deleteItem={deleteItem} moneySymbol={moneySymbol}/>,
     AddPage: <AddPage list={list} setList={setList} />,
-    ExpensesPage: <Expenses_Income_Page fullList={list} deleteItem={deleteItem} type="expense" />,
-    IncomePage: <Expenses_Income_Page fullList={list} deleteItem={deleteItem} type="income" />,
-    AddCategoryPage: <AddCategoryPage />,
+    ExpensesPage: <Expenses_Income_Page fullList={list} deleteItem={deleteItem} type="expense" moneySymbol={moneySymbol}/>,
+    IncomePage: <Expenses_Income_Page fullList={list} deleteItem={deleteItem} type="income" moneySymbol={moneySymbol} />,
+    CurrencyPickerPage: <CurrencyPickerPage  moneySymbol={moneySymbol} setMoneySymbol={setMoneySymbol}/>,
+    //AddCategoryPage: <AddCategoryPage />,
   };
 
 

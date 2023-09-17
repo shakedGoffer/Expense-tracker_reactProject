@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from 'react';
 
 function Menu({ size, page, handleMenuItemClick }) {
+    const [moneySymbol, setMoneySymbol] = useState(() => {const symbol = JSON.parse(localStorage.getItem('moneySymbol')); return symbol ? symbol :"$";}); // money symbol from local storage ot "$" as a default
+    useEffect(() => {
+        // Update local storage whenever the moneySymbol state changes
+        setMoneySymbol(() => {const symbol = JSON.parse(localStorage.getItem('moneySymbol')); return symbol ? symbol :"$";});
+    }, [page, handleMenuItemClick]);
 
     return (
 
@@ -24,8 +29,14 @@ function Menu({ size, page, handleMenuItemClick }) {
                 <a className="nav-link" onClick={() => { handleMenuItemClick("ExpensesPage") }}>Expenses</a>
             </li>
 
+            {/*
             <li className={`nav-item ${page === "AddCategoryPage" ? 'selected ' : ''}`}>
                 <a className="nav-link" onClick={() => { handleMenuItemClick("AddCategoryPage") }} >Categories</a>
+            </li>
+            */}
+
+            <li className={`nav-item ${page === "CurrencyPickerPage" ? 'selected ' : ''}`}>
+                <a className="nav-link" onClick={() => { handleMenuItemClick("CurrencyPickerPage") }} >Currency ({moneySymbol})</a>
             </li>
 
             <li className={`nav-item ${page === "AddPage" ? 'selected ' : ''}`}>

@@ -6,7 +6,7 @@ import PieChart from '../charts/PieChart';
 import MultitypeChart from '../charts/MultitypeChart';
 
 // Expenses and Income Page (details + totals + charts)
-function Expenses_Income_Page({ fullList, deleteItem, type }) {
+function Expenses_Income_Page({ fullList, deleteItem, type, moneySymbol }) {
 
   /* arr of month names (index = month num) */
   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -108,20 +108,20 @@ function Expenses_Income_Page({ fullList, deleteItem, type }) {
 
     <div className='container'>
 
-      {/* date scroll */}
+      {/* date scroll + timeline*/}
       <div className='container m-0'>
 
         { /* date + arrows to pass */}
-        <div className='text-center row m-0 pt-3'>
-          <button className='col-auto text-center btn btn-lg fs-4' onClick={handlePrev}>&lt;</button>
+        <div className='text-center row m-0 pt-3 d-flex justify-content-around'>
+          <button className='col-auto text-center btn btn-lg fs-4 px-2' onClick={handlePrev}>&lt;</button>
           <div className='col fs-3 center text-center'> {year} {monthNames[month - 1]} </div>
-          <button className='col-auto text-center btn btn-lg fs-4' onClick={handleNext}>&gt;</button>
+          <button className='col-auto text-center btn btn-lg fs-4 px-2' onClick={handleNext}>&gt;</button>
         </div>
 
         { /* time line (monthly / yearly) */}
-        <div className='text-center row justify-content-center timeLine pt-3'>
-          <button className={`btn fs-5 col-5 m-1 ${timeLine == "monthly" ? "selected" : null}`} onClick={() => { handleTimLineChange("monthly"); }}>Monthly</button>
-          <button className={`btn fs-5 col-5 m-1 ${timeLine == "yearly" ? "selected" : null} `} onClick={() => { handleTimLineChange("yearly"); }}>Yearly</button>
+        <div className=" d-flex justify-content-between text-center timeLine pt-3">
+          <input className={` rounded col-6 text-center ${timeLine == "monthly" ? "selected" : null}`} label="Monthly" type="radio" name="timeLine" value="Monthly" onClick={()=>{handleTimLineChange("monthly");}} onKeyDown={()=>{handleTimLineChange("monthly");}} ></input>
+          <input className={` rounded col-6 text-center ${timeLine == "yearly" ? "selected" : null}`} label="Yearly" type="radio" name="timeLine" value="Yearly" onClick={()=>{handleTimLineChange("yearly");}} onKeyDown={()=>{handleTimLineChange("yearly");}} onChange={()=>{handleTimLineChange("yearly");}}></input>
         </div>
 
       </div>
@@ -132,17 +132,17 @@ function Expenses_Income_Page({ fullList, deleteItem, type }) {
         <>
 
           { /* if type = expenses show category split */}
-          <div className='mt-5'> {type === "expense" && <PieChart_categories list={list} type={type} />} </div>
+          <div className='mt-5'> {type === "expense" && <PieChart_categories list={list} type={type} moneySymbol={moneySymbol} />} </div>
 
           { /* if time line = yearly, add a bar chart of the expenses / income split (in months) */}
-          <div className='mt-5'>  {(timeLine == "yearly") && <BarChart list={list} labels={monthNames} type={type} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />} </div>
+          <div className='mt-5'>  {(timeLine == "yearly") && <BarChart list={list} labels={monthNames} type={type} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} moneySymbol={moneySymbol} />} </div>
 
-          <Totals timeLine={timeLine} list={list} type={type} />
+          <Totals timeLine={timeLine} list={filteredHistoryList} type={type} moneySymbol={moneySymbol} />
 
           { /* history list */}
           <div className='mt-5'>
             <div className='col-11 border-bottom border-2 fs-4'>History</div>
-            <History list={filteredHistoryList.slice().reverse()} deleteItem={deleteItem} />
+            <History list={filteredHistoryList.slice().reverse()} deleteItem={deleteItem} moneySymbol={moneySymbol} />
           </div>
 
         </>
@@ -164,7 +164,7 @@ function NoData({ type, text }) {
 }
 
 
-function Totals({ timeLine, list, type }) {
+function Totals({ timeLine, list, type, moneySymbol }) {
   const [total, setTotal] = useState(0);
   useEffect(() => {
     // Calculate total expenses / income when the list changes
@@ -178,19 +178,19 @@ function Totals({ timeLine, list, type }) {
 
       { /* total expenses / income */}
       <div className='col-auto total d-flex flex-column align-items-center amount'>
-        <span className='fs-4'>{total.toFixed(2)}$</span>
+        <span className='fs-4'>{total.toFixed(2)}{moneySymbol}</span>
         <small className='text-capitalize amount'> total {type}</small>
       </div>
 
       {  /* daily / weekly average */}
       <div className='col-auto total d-flex flex-column align-items-center amount'>
-        <span className='fs-4 text-start'>{timeLine == "monthly" ? (total / 4 / 7).toFixed(2) : (total / 12 / 4).toFixed(2)}$</span>
+        <span className='fs-4 text-start'>{timeLine == "monthly" ? (total / 4 / 7).toFixed(2) : (total / 12 / 4).toFixed(2)}{moneySymbol}</span>
         <small className='text-capitalize amount'>avg{timeLine == "monthly" ? " daily" : " weekly"}</small>
       </div>
 
       { /* weekly / monthly average */}
       <div className='col-auto total d-flex flex-column align-items-center amount'>
-        <span className='fs-4 text-start'>{timeLine == "monthly" ? (total / 4).toFixed(2) : (total / 12).toFixed(2)}$</span>
+        <span className='fs-4 text-start'>{timeLine == "monthly" ? (total / 4).toFixed(2) : (total / 12).toFixed(2)}{moneySymbol}</span>
         <small className='text-capitalize amount'>avg{timeLine == "monthly" ? " weekly" : " monthly"}</small>
       </div>
     </div>
@@ -198,7 +198,7 @@ function Totals({ timeLine, list, type }) {
 }
 
 // Bar chart that shows the expenses / income month split
-function BarChart({ list, labels, type, selectedCategory, setSelectedCategory }) {
+function BarChart({ list, labels, type, selectedCategory, setSelectedCategory, moneySymbol }) {
 
   const [expensesData, setExpensesData] = useState(new Array(12).fill(0)); // Use state for expensesData
 
@@ -285,7 +285,7 @@ function BarChart({ list, labels, type, selectedCategory, setSelectedCategory })
             const categoryAmount = parseFloat(cleanedValue);
             const percentage = ((categoryAmount / total) * 100).toFixed(2); // Calculate the percentage
 
-            return `${datasetLabel}: ${type === 'expense' ? '-' : ''}${context.formattedValue}$ (${percentage}%)`;
+            return `${datasetLabel}: ${type === 'expense' ? '-' : ''}${context.formattedValue + moneySymbol} (${percentage}%)`;
           },
         },
       },
@@ -309,14 +309,14 @@ function BarChart({ list, labels, type, selectedCategory, setSelectedCategory })
         </select>
       </div>
 
-      {selectedCategory === "Summary" ? <BarChart2 list={list} labels={labels} type={type} /> : <MultitypeChart data={chartData} options={options} height={window.innerWidth >= 768 ? null : "400"} />}
+      {selectedCategory === "Summary" ? <BarChart2 list={list} labels={labels} type={type} moneySymbol={moneySymbol} /> : <MultitypeChart data={chartData} options={options} height={window.innerWidth >= 768 ? null : "400"} />}
     </>
   );
 }
 
 
 // Bar chart that shows the expenses / income month split + categories
-function BarChart2({ list, labels, type }) {
+function BarChart2({ list, labels, type, moneySymbol }) {
   // Create an array to hold the total expenses / income for each month
   const months = [...Array(12).keys()];
   const datasets = {};
@@ -406,9 +406,9 @@ function BarChart2({ list, labels, type }) {
             const percentage = ((categoryAmount / total) * 100).toFixed(2); // Calculate the percentage
 
             if (type === 'expense') {
-              return `${datasetLabel}: -${context.formattedValue}$ (${percentage}%)`;
+              return `${datasetLabel}: -${context.formattedValue + moneySymbol} (${percentage}%)`;
             }
-            return `${datasetLabel}: ${context.formattedValue}$ (${percentage}%)`;
+            return `${datasetLabel}: ${context.formattedValue + moneySymbol} (${percentage}%)`;
           },
         },
       },
@@ -419,7 +419,7 @@ function BarChart2({ list, labels, type }) {
 }
 
 // pie chart that shows the expenses / income split, in the time line and date chosen
-function PieChart_categories({ list, type }) {
+function PieChart_categories({ list, type, moneySymbol }) {
 
   // Calculate the total expenses / income for each category in the selected month
   const categoryTotals = {};
@@ -471,8 +471,8 @@ function PieChart_categories({ list, type }) {
             const categoryAmount = parseFloat(cleanedValue);
             const percentage = (categoryAmount / total * 100).toFixed(2); // Calculate the percentage
             if (type == 'expense')
-              return `${datasetLabel}: -${context.formattedValue}$ (${percentage}%)`;
-            return `${datasetLabel}: ${context.formattedValue}$ (${percentage}%)`;
+              return `${datasetLabel}: -${context.formattedValue + moneySymbol} (${percentage}%)`;
+            return `${datasetLabel}: ${context.formattedValue + moneySymbol} (${percentage}%)`;
           }
         }
       }

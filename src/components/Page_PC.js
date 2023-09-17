@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 function Page_PC() {
   const [page, setPage] = useState("HomePage");
+  
     
   const handleMenuItemClick = (pageName) => {
     setPage(pageName);
@@ -19,7 +20,7 @@ function Page_PC() {
       {/* App header */}
       <header className="App-header border-bottom py-sm-2 bg-white sticky-top">
         {/* App title */}
-        <h1 className=' display-5 text-uppercase text-center'>expense tracker</h1>
+        <h1 className=' display-5 text-uppercase text-center stretched-font'>Cash view</h1>
       </header>
 
       {/* Right sid - navbar */}

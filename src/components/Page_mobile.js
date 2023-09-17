@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 function Page_mobile() {
     const [page, setPage] = useState("HomePage");
+    
     return (
         <div className=''>
             <Navbar size="mobile" page={page} setPage={setPage} />
@@ -33,18 +34,19 @@ const Navbar = ({ size, page, setPage }) => {
 
     return (
         <> {/* App header */}
-    <header className={`App-header border-bottom py-2 bg-white d-flex align-content-center justify-content- ${openNav ? '' : 'sticky-top'}`}>
-        <i className={`bi navBarIcon col-auto px-2 ${openNav ? 'bi-x' : 'bi-list'}`} onClick={handleMenuIconClick} style={{ zIndex: '2' }}></i>
-        {/* App title */}
-        <h1 className=' display-5 text-uppercase m-0 col center-vertically j'>expense tracker</h1>
-    </header>
+            <header className={`App-header border-bottom py-2 pt-3 bg-white d-flex align-items-center justify-content-between ${openNav ? '' : 'sticky-top'}`}>
+                {/* App title */}
+                <h1 className='display-5 col text-uppercase m-0 text-center stretched-font'> Cash view</h1>
 
-    {openNav && (
-        <div className={`bg-white text-center col-12 center menu ${size}`} style={{ height: "100%", position: "fixed", top: "0", zIndex: "1" }}>
-            <Menu size={size} page={page} setPage={setPage} handleMenuItemClick={handleMenuItemClick} />
-        </div>
-    )}
-</>
+                <i className={`bi navBarIcon col-auto px-2 ${openNav ? 'bi-x' : 'bi-list'}`} onClick={handleMenuIconClick} style={{ zIndex: '2' }}></i>
+            </header>
+
+            {openNav && (
+                <div className={`bg-white text-center col-12 center menu ${size}`} style={{ height: "100%", position: "fixed", top: "0", zIndex: "1" }}>
+                    <Menu size={size} page={page} setPage={setPage} handleMenuItemClick={handleMenuItemClick} />
+                </div>
+            )}
+        </>
 
     );
 }
