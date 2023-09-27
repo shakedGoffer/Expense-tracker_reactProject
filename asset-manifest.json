@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Expense-tracker_reactProject/static/css/main.b1132689.css",
-    "main.js": "/Expense-tracker_reactProject/static/js/main.70a7ec03.js",
+    "main.js": "/Expense-tracker_reactProject/static/js/main.b6d689fa.js",
     "static/js/815.b0a59336.chunk.js": "/Expense-tracker_reactProject/static/js/815.b0a59336.chunk.js",
     "static/js/787.afd34582.chunk.js": "/Expense-tracker_reactProject/static/js/787.afd34582.chunk.js",
     "static/media/bootstrap-icons.woff?": "/Expense-tracker_reactProject/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
@@ -9,12 +9,12 @@
     "static/media/logo.svg": "/Expense-tracker_reactProject/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Expense-tracker_reactProject/index.html",
     "main.b1132689.css.map": "/Expense-tracker_reactProject/static/css/main.b1132689.css.map",
-    "main.70a7ec03.js.map": "/Expense-tracker_reactProject/static/js/main.70a7ec03.js.map",
+    "main.b6d689fa.js.map": "/Expense-tracker_reactProject/static/js/main.b6d689fa.js.map",
     "815.b0a59336.chunk.js.map": "/Expense-tracker_reactProject/static/js/815.b0a59336.chunk.js.map",
     "787.afd34582.chunk.js.map": "/Expense-tracker_reactProject/static/js/787.afd34582.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b1132689.css",
-    "static/js/main.70a7ec03.js"
+    "static/js/main.b6d689fa.js"
   ]
 }
