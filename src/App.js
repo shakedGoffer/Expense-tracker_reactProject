@@ -7,18 +7,12 @@ import Page_mobile from './components/Page_mobile';
 import { useState } from 'react';
 
 
-
 function App() {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [list, setList] = useState(() => { return JSON.parse(localStorage.getItem('list')) || [1] }); // list from local storage or [] as a default
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
-  }
   return (
     <div className="App">
 
-      <div className="bg-light" style={{minHeight:"100vh"}}>
+      <div className="bg-light" style={{ minHeight: "100vh" }}>
         {/* Desktop navigation */}
         <div className="desktop-nav">
           <Page_PC />
@@ -30,6 +24,7 @@ function App() {
         </div>
 
       </div>
+
 
     </div>
   );

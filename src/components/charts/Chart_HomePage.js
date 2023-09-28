@@ -5,7 +5,7 @@ import MultitypeChart from './MultitypeChart';
 
 
 {/* Multitype Chart - income expensive split and balance line withe pop up detail box on hover */ }
-function Chart_HomePage({ fullList }) {
+function Chart_HomePage({ fullList, moneySymbol }) {
 
   /* arr of month names (index = month num) */
   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -132,7 +132,7 @@ function Chart_HomePage({ fullList }) {
             const datasetLabel = context.dataset.label; // Get the dataset label (e.g., Income, Expenses, etc.)
             const dataValue = context.parsed.y; // Get the data value
             const amount = dataValue.toFixed(1); // Format amount with two decimal places
-            return ` ${datasetLabel}: ${amount}$`; // Return the dataset label and formatted value as the tooltip label
+            return ` ${datasetLabel}: ${amount + moneySymbol}`; // Return the dataset label and formatted value as the tooltip label
           },
         },
       },
@@ -183,7 +183,7 @@ function Chart_HomePage({ fullList }) {
             const datasetLabel = context.dataset.label; // Get the dataset label (e.g., Income, Expenses, etc.)
             const dataValue = context.parsed.y; // Get the data value
             const amount = dataValue.toFixed(1); // Format amount with two decimal places
-            return ` ${datasetLabel}: ${amount}$`; // Return the dataset label and formatted value as the tooltip label
+            return ` ${datasetLabel}: ${amount + moneySymbol}`; // Return the dataset label and formatted value as the tooltip label
           },
         },
       },

@@ -1,4 +1,4 @@
-/* Global class */
+
 
 /* App title */
 header.App-header {
@@ -10,6 +10,14 @@ header.App-header {
 .App-header h1 {
   word-spacing: 0.5rem;
 }
+
+/* Global class */
+
+.stretched-font {
+  transform: scaleY(1.2) !important; /* Adjust the scaling factor as needed */
+}
+
+
 
 .center {
   display: flex;
@@ -35,7 +43,7 @@ header.App-header {
 
 /* NavBar */
 
-li.nav-item{
+li.nav-item {
   margin-bottom: 8px;
 }
 
@@ -63,9 +71,15 @@ li.nav-item{
   left: 20px;
 }
 
-
 .desktop-nav button.add:hover {
   background-color: rgb(10, 88, 202) !important;
+}
+
+/* copy writs and Privacy Policies */
+.desktop-nav div.smallText {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 
@@ -74,18 +88,25 @@ li.nav-item{
   display: none;
 }
 
-/* mobile nav icon */
-.mobile-nav i.navBarIcon {
-  font-size: 2.25rem !important;
-  z-index: 10 !important;
-  position: relative !important;
+/* App title */
+.mobile-nav .App-header h1 {
+  font-size: 2.4rem !important;
+  word-spacing: 0.2rem;
+  z-index: 1 !important;
 }
 
-.mobile-nav  i.bi-x {
-  font-size: 2.8rem !important;
+/* mobile nav icon */
+.mobile-nav i.navBarIcon {
+  font-size: 2.4rem !important;
   z-index: 10 !important;
-  position: fixed !important;
+  position: fixed;
 }
+
+.mobile-nav i.bi-x {
+  font-size: 2.8rem !important;
+  
+}
+
 
 /* mobile nav ul */
 .mobile-nav div.mobile ul.mobile {
@@ -113,6 +134,24 @@ li.nav-item{
   font-size: xxx-large !important;
 }
 
+/* copy writs and Privacy Policies */
+div.smallText small {
+  color: #808080a8 !important;
+  margin-bottom: 2px;
+  
+}
+
+div.smallText small a { color: inherit; } 
+
+.mobile-nav div.smallText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+}
 
 /** HOME PAGE**/
 
@@ -120,10 +159,11 @@ li.nav-item{
 .card {
   height: 250px !important;
   min-width: 48% !important;
+  cursor: pointer;
 }
 
 /* History ul list */
-ul.history{
+ul.history {
   list-style-type: none;
 }
 
@@ -131,14 +171,14 @@ ul.history{
 
 /** ADD PAGE **/
 
-/* income / expenses radio button */
+/* income / expenses radio button - not used */
 .addPage .btnAdd {
   min-width: 49% !important;
   background-color: white;
   font-size: x-large;
 }
 
-/* Hide the default radio button */
+/* Hide the default radio button - not used */
 .addPage .btnAdd input[type='radio'] {
   appearance: none;
   -webkit-appearance: none;
@@ -150,7 +190,7 @@ ul.history{
 .buttons input {
   appearance: none;
   cursor: pointer;
-  background:white;
+  background: white;
   font-size: larger;
   transition: all 0.1s;
   padding: 6px 12px;
@@ -158,12 +198,12 @@ ul.history{
 }
 
 .buttons input.income {
-  color:rgb(25, 135, 84);
+  color: rgb(25, 135, 84);
   border: 1px solid rgb(25, 135, 84);
 }
 
 .buttons input.expense {
-  color:rgb(220, 53, 69);
+  color: rgb(220, 53, 69);
   border: 1px solid rgb(220, 53, 69);
 }
 
@@ -198,33 +238,58 @@ ul.history{
 /* show expense categories */
 .showExpense_Categories {
   visibility: visible;
-  max-height: 100px; /* Set an appropriate value */
+  max-height: 100px;
+  /* Set an appropriate value */
 }
 
 /* hide expense categories */
 .hideExpense_Categories {
-  visibility:hidden ;
-  max-height: 0; /* Set an appropriate value */
+  visibility: hidden;
+  max-height: 0;
+  /* Set an appropriate value */
 }
 
 
-.form-group{
+.form-group {
   padding: 0.8rem 0 !important;
 }
-.form-group label,.form-group label span {
-  font-size: larger  !important;
+
+.form-group label,
+.form-group label span {
+  font-size: larger !important;
 }
 
-/** Expenses page **/
+/* Add custom CSS to expand DatePicker to 100% width */
+.form-group.row .react-datepicker-wrapper,
+.form-group.row .react-datepicker__input-container {
+  width: 100%;
+}
+
+/** Expenses / Income page **/
 
 /* btn time Line monthly / yearly */
-.timeLine .btn{
+
+.timeLine input {
+  appearance: none;
+  cursor: pointer;
+  font-size: larger;
+  transition: all 0.1s;
+  padding: 6px 12px;
+  max-width: 49% !important;
   background-color: white;
+  border: 1.5px solid black;
 }
 
-.timeLine .btn.selected{
-  background-color: transparent;
-  border: 1.5px solid black;
+.timeLine input.selected {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 0px #808080;
+  background-color: black;
+  color: white;
+}
+
+.timeLine input::before {
+  content: attr(label);
+  text-align: center;
 }
 
 /** category page **/
@@ -236,16 +301,52 @@ ul.history{
   height: 28px;
   cursor: pointer;
 }
+
 #Color::-webkit-color-swatch {
   border-radius: 50%;
   border: 2px solid #000000;
 }
+
 #Color::-moz-color-swatch {
   border-radius: 50%;
   border: 2px solid #000000;
 }
 
+/* details box*/
+.item-details-box-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 10;
+  /* Ensure the overlay is above other content */
+}
 
+.item-details-box {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 11;
+  /* Ensure the box is above the overlay */
+}
+
+/** Currency Picker Page **/
+ .list-group {
+  font-size: larger !important;
+}
+
+/** when us on android upp --> show only mobile-nav 
+.desktop-nav {
+  display: none;
+}
+
+.mobile-nav {
+  display: block;
+}**/
 
 
 @media (max-width: 768px) {
@@ -259,52 +360,33 @@ ul.history{
     display: block;
   }
 
-  /* App title */
-  .App-header h1 {
-    font-size: 2.2rem !important;
-    word-spacing: 0.2rem;
-    z-index: 1 !important;
-  }
-
   /* card income / expenses mobile font siz */
-  .card p.card-title{
+  .card p.card-title {
     font-size: xx-large !important;
   }
 
   /* form */
-  form h2{
-    font-size: xx-large  !important;
+  form h2 {
+    font-size: xx-large !important;
   }
+
   .form-group label {
-    font-size: x-large  !important;
-  }
-  .form-group input {
-    font-size: large  !important;
+    font-size: x-large !important;
   }
 
+  .form-group input, .DatePicker {
+    font-size: large !important;
+  }
 
+  /** + Currency Picker Page **/
+ .list-group {
+  font-size: larger !important;
 }
 
-/**/
-.item-details-box-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  z-index: 10; /* Ensure the overlay is above other content */
 }
-
-.item-details-box {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 11; /* Ensure the box is above the overlay */
-}
-
-
 
 /* CSS for touch devices */
 @media (hover: none) {}
+
+
+
