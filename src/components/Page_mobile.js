@@ -2,13 +2,15 @@ import React from 'react'
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { App } from '@capacitor/app';
+
 import Screen from "./Screen";
 import Menu from "./Menu"
 import { useState } from 'react';
 
 function Page_mobile() {
     const [page, setPage] = useState("HomePage");
-    
+
     return (
         <div className=''>
             <Navbar size="mobile" page={page} setPage={setPage} />
@@ -30,6 +32,23 @@ const Navbar = ({ size, page, setPage }) => {
         setPage(pageName);
         setOpenNav(false);
     }
+
+    // setPage to "HomePage" when back button clicks
+    window.history.pushState({}, null, null);
+    window.addEventListener('popstate', () => {
+        if (openNav)
+            setOpenNav(false);
+        else if (page != "HomePage")
+            setPage("HomePage");
+    });
+
+    // setPage to "HomePage" when back button clicks - android app
+    App.addListener('backButton', () => {
+        if (openNav)
+            setOpenNav(false);
+        else if (page != "HomePage")
+            setPage("HomePage");
+    });
 
     return (
         <> {/* App header */}

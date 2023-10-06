@@ -339,6 +339,18 @@ ul.history {
   font-size: larger !important;
 }
 
+/** Settings  Page **/
+
+.settingsPage small {
+  line-height: 1;
+  font-size: medium !important;
+}
+.settingsPage a { 
+  color: inherit; 
+  text-decoration: none;
+} 
+
+
 /** when us on android upp --> show only mobile-nav 
 .desktop-nav {
   display: none;
@@ -346,8 +358,8 @@ ul.history {
 
 .mobile-nav {
   display: block;
-}**/
-
+}
+**/
 
 @media (max-width: 768px) {
   /* For screen sizes up to 768px (mobile devices) */

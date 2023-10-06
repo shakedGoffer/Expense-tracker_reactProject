@@ -10,7 +10,7 @@ import { useState } from 'react';
 function App() {
 
   return (
-    <div className="App">
+    <div className="App"  style={{ height: "100vh" }}>
 
       <div className="bg-light" style={{ minHeight: "100vh" }}>
         {/* Desktop navigation */}

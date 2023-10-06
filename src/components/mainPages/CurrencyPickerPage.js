@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import currencyData from '../../Currencies.json';
 
 
@@ -11,7 +12,7 @@ function CurrencyPickerPage({ moneySymbol, setMoneySymbol }) {
     }, [moneySymbol, setMoneySymbol]);
 
     return (
-        <div className='container py-3'>
+        <div className='pt-4'>
             <CurrencyPicker moneySymbol={moneySymbol} setMoneySymbol={setMoneySymbol} />
         </div>
 
@@ -38,7 +39,11 @@ function CurrencyPicker({ moneySymbol, setMoneySymbol }) {
 
     return (
         <div className={` p-0 `}>
-            <div className='fs-4'>Selected Currency: {moneySymbol}</div>
+            <div className=" px-1  align-items-center">
+                <div className='col-12 fs-3'>Currency</div>
+                <small className='text-secondary'>Selected Currency: {moneySymbol}</small>
+            </div>
+
             <form className='pt-3'>
                 <input type="text" label="input" name="input" className="form-control mb-2 fs-5" placeholder="Search currencies" value={searchTerm} onChange={handleSearchTermChange}></input>
                 <ul className="list-group">

@@ -85,19 +85,23 @@ function AddPage({ list, setList, setPage }) {
             setList(tempList);
 
             /* show success toast */
-            toast("✏️ " +selectedOption + ' added successfully', {
-                toastId: "toastAdd",// prevents duplications
-                className: "text-capitalize",
-                closeButton: false,
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
+           const isToastEnabled = localStorage.getItem('ToastMessagesSwitch') ? JSON.parse(localStorage.getItem('ToastMessagesSwitch')) : true;
+
+            if (isToastEnabled === true) {
+                toast("✏️ " + selectedOption + ' added successfully', {
+                    toastId: "toastAdd",// prevents duplications
+                    className: "text-capitalize",
+                    closeButton: false,
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
 
             /* return to home page after submit */
             setPage("HomePage");

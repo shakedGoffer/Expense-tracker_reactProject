@@ -84,19 +84,23 @@ function EditItemPage({ list, setList, item, setPage }) {
       setList(tempList);
 
       /* show success toast */
-      toast("✏️ " + selectedOption + ' edited successfully', {
-        toastId: "toastAdd",// prevents duplications
-        closeButton: false,
-        className: "text-capitalize",
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      const isToastEnabled = localStorage.getItem('ToastMessagesSwitch') ? JSON.parse(localStorage.getItem('ToastMessagesSwitch')) : true;
+
+      if (isToastEnabled === true) {
+        toast("✏️ " + selectedOption + ' edited successfully', {
+          toastId: "toastAdd",// prevents duplications
+          closeButton: false,
+          className: "text-capitalize",
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
 
       /* return to home page after submit */
       setPage("HomePage");

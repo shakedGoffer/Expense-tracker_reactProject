@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from 'react';
 
+
 function HomePage({ list, fullList, deleteItem, moneySymbol, setPage}) {
 
   const [sumIncome, setSumIncome] = useState(0);

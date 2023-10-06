@@ -2,20 +2,36 @@ import React, { useEffect } from 'react'
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { App } from '@capacitor/app';
+
 import Screen from "./Screen";
 import Menu from "./Menu"
 import { useState } from 'react';
 
 function Page_PC() {
   const [page, setPage] = useState("HomePage");
-  
-    
+
+
   const handleMenuItemClick = (pageName) => {
     setPage(pageName);
-}
+  }
+
+  // setPage to "HomePage" when back button clicks
+  window.history.pushState({}, null, null);
+  window.addEventListener('popstate', () => {
+    if (page != "HomePage")
+      setPage("HomePage");
+  });
+
+  // setPage to "HomePage" when back button clicks - android app
+  App.addListener('backButton', () => {
+    if (page != "HomePage")
+      setPage("HomePage");
+  });
+
   return (
     <div className='container-fluid row m-0 p-0 '>
-      
+
       {/* App header */}
       <header className="App-header border-bottom py-sm-2 bg-white sticky-top">
         {/* App title */}
@@ -25,7 +41,7 @@ function Page_PC() {
       {/* Right sid - navbar */}
       <div id='left' className='col-3 border-end bg-white p-0' style={{ minHeight: "100vh" }}>
         <div className='container col-3 position-fixed' >
-          <Menu size="desktop" page={page} setPage={setPage} handleMenuItemClick={handleMenuItemClick}/>
+          <Menu size="desktop" page={page} setPage={setPage} handleMenuItemClick={handleMenuItemClick} />
         </div>
       </div>
 

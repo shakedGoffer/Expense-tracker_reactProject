@@ -33,10 +33,15 @@ function Menu({ size, page, handleMenuItemClick }) {
             <li className={`nav-item ${page === "AddCategoryPage" ? 'selected ' : ''}`}>
                 <a className="nav-link" onClick={() => { handleMenuItemClick("AddCategoryPage") }} >Categories</a>
             </li>
-            */}
+            
 
             <li className={`nav-item ${page === "CurrencyPickerPage" ? 'selected ' : ''}`}>
                 <a className="nav-link" onClick={() => { handleMenuItemClick("CurrencyPickerPage") }} >Currency ({moneySymbol})</a>
+            </li>
+            */}
+
+            <li className={`nav-item ${page === "SettingsPage" ? 'selected ' : ''}`}>
+                <a className="nav-link" onClick={() => { handleMenuItemClick("SettingsPage") }}>Settings <i className="bi bi-gear"></i></a>
             </li>
 
             <li className={`nav-item ${page === "AddPage" ? 'selected ' : ''}`}>

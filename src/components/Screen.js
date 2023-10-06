@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { App } from '@capacitor/app';
 
 // pages import
 import HomePage from './mainPages/HomePage';
@@ -10,6 +9,7 @@ import Expenses_Income_Page from './mainPages/Expenses_Income_Page';
 import AddCategoryPage from './mainPages/AddCategoryPage';
 import CurrencyPickerPage from './mainPages/CurrencyPickerPage';
 import EditItemPage from './mainPages/EditItemPage';
+import SettingsPage from './mainPages/SettingsPage';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +18,7 @@ function Screen({ page, setPage }) {
   const [list, setList] = useState(() => { const storedList = JSON.parse(localStorage.getItem('list')); return Array.isArray(storedList) ? storedList : []; }); // list from local storage or [] as a default
   const [monthList, setMonthList] = useState([]);
   const [moneySymbol, setMoneySymbol] = useState(() => { const symbol = JSON.parse(localStorage.getItem('moneySymbol')); return symbol ? symbol : "$"; }); // money symbol from local storage ot "$" as a default
-  const [selectedItem,setSelectedItem] = useState("");
+  const [selectedItem, setSelectedItem] = useState("");
 
   // sort and create a monthList only items (when state list changes)
   useEffect(() => {
@@ -54,48 +54,39 @@ function Screen({ page, setPage }) {
       setList(updatedList);  // Update the state with the new list
 
       /* show delete toast */
-      toast('🗑️ Item deleted', {
-        closeButton: false,
-        position: "top-right",
-        className: "text-capitalize",
-        autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      const isToastEnabled = localStorage.getItem('ToastMessagesSwitch') ? JSON.parse(localStorage.getItem('ToastMessagesSwitch')) : true;
+
+      if (isToastEnabled === true) {
+        toast('🗑️ Item deleted', {
+          closeButton: false,
+          position: "top-right",
+          className: "text-capitalize",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
     }
-    else{
+    else {
       setSelectedItem(item);
       setPage("EditItemPage");
     }
   }
-
-  // setPage to "HomePage" when back button clicks
-  window.history.pushState({}, null, null);
-  window.addEventListener('popstate', () => {
-    if (page != "HomePage")
-      setPage("HomePage");
-  });
-
-  // setPage to "HomePage" when back button clicks - android app
-  App.addListener('backButton', () => {
-    if (page != "HomePage")
-      setPage("HomePage");
-  });
-
 
 
   // Define a mapping object for components
   const pageComponents = {
     HomePage: <HomePage list={monthList} fullList={list} deleteItem={deleteItem} moneySymbol={moneySymbol} setPage={setPage} />,
     AddPage: <AddPage list={list} setList={setList} setPage={setPage} />,
-    EditItemPage: <EditItemPage list={list} setList={setList} setPage={setPage} item={selectedItem || ""}/>,
+    EditItemPage: <EditItemPage list={list} setList={setList} setPage={setPage} item={selectedItem || ""} />,
     ExpensesPage: <Expenses_Income_Page fullList={list} deleteItem={deleteItem} type="expense" moneySymbol={moneySymbol} />,
     IncomePage: <Expenses_Income_Page fullList={list} deleteItem={deleteItem} type="income" moneySymbol={moneySymbol} />,
-    CurrencyPickerPage: <CurrencyPickerPage moneySymbol={moneySymbol} setMoneySymbol={setMoneySymbol} />,
+    //CurrencyPickerPage: <CurrencyPickerPage moneySymbol={moneySymbol} setMoneySymbol={setMoneySymbol} />,
+    SettingsPage: <SettingsPage moneySymbol={moneySymbol} setMoneySymbol={setMoneySymbol} setPage={setPage} />,
     //AddCategoryPage: <AddCategoryPage />,
   };
 
