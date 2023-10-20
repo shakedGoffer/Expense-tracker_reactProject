@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# CashVue: money/expense tracker (React) 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Using CashVue [](https://shakedgoffer.github.io/Expense-tracker_reactProject/)
+You can use CashVue as a website at [this link](https://shakedgoffer.github.io/Expense-tracker_reactProject/).
+Or install  the app in the Play Store at [this link](https://play.google.com/store/apps/details?id=com.examplecashvue.app).
+> [!IMPORTANT]
+> The app uses intenal storeg to save your data, therfor the data is only avilable in your device and if you uninstall the app, all your data will be permanently deleted !.
 
-In the project directory, you can run:
 
-### `npm start`
+## About CashVue []()
+Discover CashVue — a tool for tracking, budgeting, and managing your money. Effortlessly monitor your finances and analyze your habits.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+⬤ Convenience: Access the app without an internet connection, at any time & anywhere.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+⬤ User-friendly: Clear and straightforward functionality.
 
-### `npm test`
+⬤ Data privacy: Your information is exclusively accessible on your device and won't be stored in a database. Please note that if you uninstall the app, all your data will be permanently deleted !!!.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+⬤ Add free: enjoy CashVue without adds. 
 
-### `npm run build`
+⬤ Quick Entries: Add expenses and income with just a click.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+⬤ Category Organization: Easily categorize and organize your spendings.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+⬤ Explore Your Data: Dive into your financial history and patterns whenever you need.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+⬤ Visualize Insights: Understand your finances with intuitive charts—by category, monthly, and yearly breakdowns.
 
-### `npm run eject`
+⬤ Comprehensive Overview: Get a clear view of your total expenses and income on a daily, weekly, and monthly basis.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Technologies used []()
+* Code Editors: VS code, Android stoudio.
+* Used languages: CSS, HTML, JavaScript.
+* React:
+  react hooks,
+  react-icons,
+  react-textarea-autosize
+ react-select,
+ chart.js, react-chartjs-2
+ react-datepicker,
+ react-toastify.
+* Bootstrap: bootstrap CSS class, bootstrap icons.
+* Canva: App icon.
+* Hotpot: feature graphic.
+* AppMockUp: app screenshots.
