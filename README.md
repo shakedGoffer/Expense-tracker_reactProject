@@ -1,9 +1,11 @@
-# Cash View: money/expense tracker (React) 
+# CashVue: money/expense tracker (React) 
 
 
 ## Using CashVue [](https://shakedgoffer.github.io/Expense-tracker_reactProject/)
 You can use CashVue as a website at [this link](https://shakedgoffer.github.io/Expense-tracker_reactProject/).
-Or install  the app in the Play Store at [this link](https://play.google.com/store/apps/details?id=com.examplecashvue.app) 
+Or install  the app in the Play Store at [this link](https://play.google.com/store/apps/details?id=com.examplecashvue.app).
+> [!IMPORTANT]
+> The app uses intenal storeg to save your data, therfor the data is only avilable in your device and if you uninstall the app, all your data will be permanently deleted !.
 
 
 ## About CashVue []()
@@ -27,13 +29,23 @@ Discover CashVue — a tool for tracking, budgeting, and managing your money. Ef
 
 ⬤ Comprehensive Overview: Get a clear view of your total expenses and income on a daily, weekly, and monthly basis.
 
-## Project Dietals []()
 
-### Code
-Code Editors: VS code, Android stoudio.
-Used languages: CSS, HTML, JavaScript
-React: react hooks, react icons.
-Bootstrap: bootstrap CSS class, bootstrap icons.
-Canva: App icon.
-Hotpot: feature graphic.
-AppMockUp: app screenshots
+## Technologies used []()
+* Code Editors: VS code, Android stoudio.
+* Used languages: CSS, HTML, JavaScript.
+* React:
+  react hooks,
+  react-icons,
+  react-textarea-autosize
+ react-select,
+ chart.js, react-chartjs-2
+ react-datepicker,
+ react-toastify.
+* Bootstrap: bootstrap CSS class, bootstrap icons.
+* Canva: App icon.
+* Hotpot: feature graphic.
+* AppMockUp: app screenshots.
+
+
+ 
+
