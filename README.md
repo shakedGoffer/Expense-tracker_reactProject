@@ -36,7 +36,7 @@ Discover CashVue — a tool for tracking, budgeting, and managing your money. Ef
 * React:
   react hooks,
   react-icons,
-  react-textarea-autosize
+  react-textarea-autosize,
  react-select,
  chart.js, react-chartjs-2
  react-datepicker,
