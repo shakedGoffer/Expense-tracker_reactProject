@@ -17,7 +17,7 @@ Discover CashVue — a tool for tracking, budgeting, and managing your money. Ef
 
 ⬤ Data privacy: Your information is exclusively accessible on your device and won't be stored in a database. Please note that if you uninstall the app, all your data will be permanently deleted !!!.
 
-⬤ Add free: enjoy CashVue without adds. 
+⬤ Ad-free: enjoy CashVue without ads. 
 
 ⬤ Quick Entries: Add expenses and income with just a click.
 
